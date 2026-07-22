@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -19,14 +20,14 @@ namespace GTAVehicleBrowser
         public MainForm()
         {
             Text = "GTA V Vehicle Browser";
-            Width = 700;
+            Width = 750;
             Height = 500;
 
             searchBox = new TextBox();
             searchBox.Left = 20;
             searchBox.Top = 20;
-            searchBox.Width = 620;
-            searchBox.PlaceholderText = "Araç ara...";
+            searchBox.Width = 680;
+            searchBox.PlaceholderText = "Araç adı veya model kodu ara...";
             searchBox.TextChanged += SearchBox_TextChanged;
 
             vehicleList = new ListBox();
@@ -37,15 +38,16 @@ namespace GTAVehicleBrowser
             vehicleList.SelectedIndexChanged += VehicleList_SelectedIndexChanged;
 
             infoLabel = new Label();
-            infoLabel.Left = 350;
+            infoLabel.Left = 360;
             infoLabel.Top = 80;
-            infoLabel.Width = 250;
+            infoLabel.Width = 300;
             infoLabel.Height = 150;
 
             copyButton = new Button();
-            copyButton.Left = 350;
+            copyButton.Left = 360;
             copyButton.Top = 250;
-            copyButton.Width = 200;
+            copyButton.Width = 220;
+            copyButton.Height = 40;
             copyButton.Text = "Model Kodunu Kopyala";
             copyButton.Click += CopyButton_Click;
 
@@ -60,20 +62,32 @@ namespace GTAVehicleBrowser
 
         private void LoadVehicles()
         {
-            string file = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "vehicles.json"
-            );
-
-            if (File.Exists(file))
+            try
             {
-                string json = File.ReadAllText(file);
+                Assembly assembly = Assembly.GetExecutingAssembly();
 
-                vehicles = JsonSerializer.Deserialize<List<Vehicle>>(json)
-                           ?? new List<Vehicle>();
+                using Stream? stream =
+                    assembly.GetManifestResourceStream(
+                        "GTAVehicleBrowser.vehicles.json"
+                    );
+
+                if (stream != null)
+                {
+                    using StreamReader reader = new StreamReader(stream);
+
+                    string json = reader.ReadToEnd();
+
+                    vehicles =
+                        JsonSerializer.Deserialize<List<Vehicle>>(json)
+                        ?? new List<Vehicle>();
+                }
+
+                RefreshList(vehicles);
             }
-
-            RefreshList(vehicles);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 
@@ -81,14 +95,14 @@ namespace GTAVehicleBrowser
         {
             vehicleList.Items.Clear();
 
-            foreach (var vehicle in list)
+            foreach (Vehicle vehicle in list)
             {
                 vehicleList.Items.Add(vehicle.Name);
             }
         }
 
 
-        private void SearchBox_TextChanged(object sender, EventArgs e)
+        private void SearchBox_TextChanged(object? sender, EventArgs e)
         {
             string text = searchBox.Text.ToLower();
 
@@ -102,48 +116,50 @@ namespace GTAVehicleBrowser
         }
 
 
-        private void VehicleList_SelectedIndexChanged(object sender, EventArgs e)
+        private Vehicle? GetSelectedVehicle()
         {
             if (vehicleList.SelectedItem == null)
-                return;
+                return null;
 
-
-            var vehicle = vehicles.FirstOrDefault(
+            return vehicles.FirstOrDefault(
                 x => x.Name == vehicleList.SelectedItem.ToString()
             );
-
-
-            if (vehicle != null)
-            {
-                infoLabel.Text =
-                    "Araç:\n" +
-                    vehicle.Name +
-                    "\n\nModel:\n" +
-                    vehicle.Model +
-                    "\n\nTür:\n" +
-                    vehicle.Type;
-            }
         }
 
 
-        private void CopyButton_Click(object sender, EventArgs e)
+        private void VehicleList_SelectedIndexChanged(
+            object? sender,
+            EventArgs e)
         {
-            if (vehicleList.SelectedItem == null)
+            Vehicle? vehicle = GetSelectedVehicle();
+
+            if (vehicle == null)
                 return;
 
+            infoLabel.Text =
+                "Araç:\n" +
+                vehicle.Name +
+                "\n\nModel:\n" +
+                vehicle.Model +
+                "\n\nTür:\n" +
+                vehicle.Type;
+        }
 
-            var vehicle = vehicles.FirstOrDefault(
-                x => x.Name == vehicleList.SelectedItem.ToString()
+
+        private void CopyButton_Click(
+            object? sender,
+            EventArgs e)
+        {
+            Vehicle? vehicle = GetSelectedVehicle();
+
+            if (vehicle == null)
+                return;
+
+            Clipboard.SetText(vehicle.Model);
+
+            MessageBox.Show(
+                "Kopyalandı: " + vehicle.Model
             );
-
-
-            if (vehicle != null)
-            {
-                Clipboard.SetText(vehicle.Model);
-                MessageBox.Show(
-                    "Model kodu kopyalandı: " + vehicle.Model
-                );
-            }
         }
     }
 
