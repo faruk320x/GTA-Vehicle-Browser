@@ -211,28 +211,26 @@ namespace GTAVehicleBrowser
 
 
             filteredVehicles =
-    vehicles
-    .GroupBy(x => x.Model)
-    .Select(x => x.First())
-    .Where(x =>
-        (
-        category == "Tümü"
-        ||
-        x.Type == category
-        )
-        &&
-        (
-        x.Name
-        .ToLower()
-        .Contains(search)
-        ||
-        x.Model
-        .ToLower()
-        .Contains(search)
-        )
-    )
-    .OrderBy(x => x.Name)
-    .ToList();
+                vehicles
+                .Where(x =>
+                    (
+                    category == "Tümü"
+                    ||
+                    x.Type == category
+                    )
+                    &&
+                    (
+                    x.Name
+                    .ToLower()
+                    .Contains(search)
+                    ||
+                    x.Model
+                    .ToLower()
+                    .Contains(search)
+                    )
+                )
+                .OrderBy(x => x.Name)
+                .ToList();
 
 
 
