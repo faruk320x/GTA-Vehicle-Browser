@@ -6187,18 +6187,6 @@
   "Image": "guardian.jpg"
 },
 {
-  "Name": "Journey",
-  "Model": "journey",
-  "Type": "Van",
-  "Image": "journey.jpg"
-},
-{
-  "Name": "Journey II",
-  "Model": "journey2",
-  "Type": "Van",
-  "Image": "journey2.jpg"
-},
-{
   "Name": "Mule",
   "Model": "mule",
   "Type": "Commercial",
