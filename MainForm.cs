@@ -5,155 +5,181 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace GTAVehicleBrowser
 {
     public class MainForm : Form
     {
-        private TextBox searchBox;
-        private ListBox vehicleList;
-        private Label infoLabel;
-        private Button copyButton;
+        TextBox searchBox;
+        ListBox vehicleList;
+        Label infoLabel;
+        Button copyButton;
+        PictureBox vehicleImage;
 
-        private List<Vehicle> vehicles = new();
+        List<Vehicle> vehicles = new();
+
 
         public MainForm()
         {
-            Text = "GTA V Vehicle Browser";
-            Width = 750;
-            Height = 500;
+            Text = "GTA V Vehicle Catalog";
+            Width = 900;
+            Height = 600;
+
 
             searchBox = new TextBox();
             searchBox.Left = 20;
             searchBox.Top = 20;
-            searchBox.Width = 680;
-            searchBox.PlaceholderText = "Araç adı veya model kodu ara...";
+            searchBox.Width = 820;
+            searchBox.PlaceholderText = "Araç ara...";
             searchBox.TextChanged += SearchBox_TextChanged;
+
 
             vehicleList = new ListBox();
             vehicleList.Left = 20;
             vehicleList.Top = 60;
             vehicleList.Width = 300;
-            vehicleList.Height = 350;
+            vehicleList.Height = 450;
             vehicleList.SelectedIndexChanged += VehicleList_SelectedIndexChanged;
+
+
+            vehicleImage = new PictureBox();
+            vehicleImage.Left = 360;
+            vehicleImage.Top = 60;
+            vehicleImage.Width = 350;
+            vehicleImage.Height = 220;
+            vehicleImage.SizeMode = PictureBoxSizeMode.Zoom;
+
 
             infoLabel = new Label();
             infoLabel.Left = 360;
-            infoLabel.Top = 80;
-            infoLabel.Width = 300;
-            infoLabel.Height = 150;
+            infoLabel.Top = 300;
+            infoLabel.Width = 350;
+            infoLabel.Height = 120;
+
 
             copyButton = new Button();
             copyButton.Left = 360;
-            copyButton.Top = 250;
+            copyButton.Top = 430;
             copyButton.Width = 220;
             copyButton.Height = 40;
             copyButton.Text = "Model Kodunu Kopyala";
             copyButton.Click += CopyButton_Click;
 
+
             Controls.Add(searchBox);
             Controls.Add(vehicleList);
+            Controls.Add(vehicleImage);
             Controls.Add(infoLabel);
             Controls.Add(copyButton);
+
 
             LoadVehicles();
         }
 
 
-        private void LoadVehicles()
+        void LoadVehicles()
         {
-            try
+            string file =
+                Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "vehicles.json"
+                );
+
+
+            if (File.Exists(file))
             {
-                Assembly assembly = Assembly.GetExecutingAssembly();
+                string json = File.ReadAllText(file);
 
-                using Stream? stream =
-                    assembly.GetManifestResourceStream(
-                        "GTAVehicleBrowser.vehicles.json"
-                    );
-
-                if (stream != null)
-                {
-                    using StreamReader reader = new StreamReader(stream);
-
-                    string json = reader.ReadToEnd();
-
-                    vehicles =
-                        JsonSerializer.Deserialize<List<Vehicle>>(json)
-                        ?? new List<Vehicle>();
-                }
-
-                RefreshList(vehicles);
+                vehicles =
+                    JsonSerializer.Deserialize<List<Vehicle>>(json)
+                    ?? new();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            RefreshList(vehicles);
         }
 
 
-        private void RefreshList(List<Vehicle> list)
+        void RefreshList(List<Vehicle> list)
         {
             vehicleList.Items.Clear();
 
-            foreach (Vehicle vehicle in list)
-            {
-                vehicleList.Items.Add(vehicle.Name);
-            }
+            foreach (var v in list)
+                vehicleList.Items.Add(v.Name);
         }
 
 
-        private void SearchBox_TextChanged(object? sender, EventArgs e)
+        void SearchBox_TextChanged(object? sender, EventArgs e)
         {
             string text = searchBox.Text.ToLower();
 
             var result = vehicles
                 .Where(x =>
-                    x.Name.ToLower().Contains(text) ||
-                    x.Model.ToLower().Contains(text))
+                x.Name.ToLower().Contains(text) ||
+                x.Model.ToLower().Contains(text))
                 .ToList();
 
             RefreshList(result);
         }
 
 
-        private Vehicle? GetSelectedVehicle()
+        Vehicle? GetSelected()
         {
             if (vehicleList.SelectedItem == null)
                 return null;
 
             return vehicles.FirstOrDefault(
-                x => x.Name == vehicleList.SelectedItem.ToString()
+                x => x.Name ==
+                vehicleList.SelectedItem.ToString()
             );
         }
 
 
-        private void VehicleList_SelectedIndexChanged(
+        void VehicleList_SelectedIndexChanged(
             object? sender,
             EventArgs e)
         {
-            Vehicle? vehicle = GetSelectedVehicle();
+            var vehicle = GetSelected();
 
             if (vehicle == null)
                 return;
 
+
             infoLabel.Text =
-                "Araç:\n" +
-                vehicle.Name +
-                "\n\nModel:\n" +
-                vehicle.Model +
-                "\n\nTür:\n" +
-                vehicle.Type;
+                "Araç: " + vehicle.Name +
+                "\n\nModel: " + vehicle.Model +
+                "\n\nKategori: " + vehicle.Type;
+
+
+            string imagePath =
+                Path.Combine(
+                    AppDomain.CurrentDomain.BaseDirectory,
+                    "images",
+                    vehicle.Image
+                );
+
+
+            if (File.Exists(imagePath))
+            {
+                vehicleImage.Image =
+                    Image.FromFile(imagePath);
+            }
+            else
+            {
+                vehicleImage.Image = null;
+            }
         }
 
 
-        private void CopyButton_Click(
+        void CopyButton_Click(
             object? sender,
             EventArgs e)
         {
-            Vehicle? vehicle = GetSelectedVehicle();
+            var vehicle = GetSelected();
 
             if (vehicle == null)
                 return;
+
 
             Clipboard.SetText(vehicle.Model);
 
@@ -169,5 +195,6 @@ namespace GTAVehicleBrowser
         public string Name { get; set; } = "";
         public string Model { get; set; } = "";
         public string Type { get; set; } = "";
+        public string Image { get; set; } = "";
     }
 }
