@@ -1,0 +1,226 @@
+Adder|adder|Super
+Akuma|akuma|Motorcycle
+Alpha|alpha|Sports
+Baller|baller|SUV
+Baller Sport|baller2|SUV
+Banshee|banshee|Sports
+Banshee 900R|banshee2|Super
+Bati 801|bati|Motorcycle
+Bati 801RR|bati2|Motorcycle
+Buffalo|buffalo|Sports
+Buffalo S|buffalo2|Sports
+Bullet|bullet|Super
+Carbonizzare|carbonizzare|Sports
+Cheetah|cheetah|Super
+Comet|comet2|Sports
+Coquette|coquette|Sports
+Dominator|dominator|Muscle
+Elegy RH8|elegy|Sports
+Elegy Retro Custom|elegy2|Sports
+Entity XF|entityxf|Super
+Feltzer|feltzer2|Sports
+Gauntlet|gauntlet|Muscle
+Infernus|infernus|Super
+Jester|jester|Sports
+Kuruma|kuruma|Sports
+Armored Kuruma|kuruma2|Sports
+Massacro|massacro|Sports
+Osiris|osiris|Super
+Rapid GT|rapidgt|Sports
+Reaper|reaper|Super
+Sultan|sultan|Sports
+Sultan RS|sultanrs|Sports
+Tempesta|tempesta|Super
+T20|t20|Super
+Turismo R|turismor|Super
+Zentorno|zentorno|Super
+Asea|asea|Sedan
+Asterope|asterope|Sedan
+Cognoscenti|cognoscenti|Sedan
+Cognoscenti Cabrio|cognoscenti2|Sedan
+Emperor|emperor|Sedan
+Fugitive|fugitive|Sedan
+Glendale|glendale|Sedan
+Ingot|ingot|Sedan
+Intruder|intruder|Sedan
+Premier|premier|Sedan
+Primo|primo|Sedan
+Primo Custom|primo2|Sedan
+Regina|regina|Sedan
+Romero Hearse|romero|Sedan
+Schafter|schafter2|Sedan
+Schafter V12|schafter3|Sedan
+Stanier|stanier|Sedan
+Stratum|stratum|Sedan
+Super Diamond|superd|Sedan
+Tailgater|tailgater|Sedan
+Warrener|warrener|Sedan
+Washington|washington|Sedan
+
+Cavalcade|cavalcade|SUV
+Cavalcade XL|cavalcade2|SUV
+Dubsta|dubsta|SUV
+Dubsta Luxury|dubsta2|SUV
+FQ 2|fq2|SUV
+Granger|granger|SUV
+Gresley|gresley|SUV
+Habanero|habanero|SUV
+Huntley S|huntley|SUV
+Landstalker|landstalker|SUV
+Mesa|mesa|SUV
+Patriot|patriot|SUV
+Radius|radi|SUV
+Rocoto|rocoto|SUV
+Seminole|seminole|SUV
+Serrano|serrano|SUV
+XLS|xls|SUV
+XLS Armored|xls2|SUV
+
+Blade|blade|Muscle
+Buccaneer|buccaneer|Muscle
+Buccaneer Custom|buccaneer2|Muscle
+Chino|chino|Muscle
+Chino Custom|chino2|Muscle
+Dominator|dominator|Muscle
+Dukes|dukes|Muscle
+Gauntlet|gauntlet|Muscle
+Gauntlet Classic|gauntlet2|Muscle
+Hotknife|hotknife|Muscle
+Phoenix|phoenix|Muscle
+Picador|picador|Muscle
+Rat Loader|ratloader|Muscle
+Rat Truck|ratloader2|Muscle
+Ruiner|ruiner|Muscle
+Sabre Turbo|sabregt|Muscle
+Sabre Turbo Custom|sabregt2|Muscle
+Tampa|tampa|Muscle
+Virgo|virgo|Muscle
+Vigero|vigero|Muscle
+Blista|blista|Compact
+Blista Compact|blista2|Compact
+Blista Kanjo|kanjo|Compact
+Brioso|brioso|Compact
+Club|club|Compact
+Dilettante|dilettante|Compact
+Issi|issi2|Compact
+Panto|panto|Compact
+Prairie|prairie|Compact
+Rhapsody|rhapsody|Compact
+
+Cognoscenti Cabrio|cognoscenti2|Coupe
+Exemplar|exemplar|Coupe
+Felon|felon|Coupe
+Felon GT|felon2|Coupe
+F620|f620|Coupe
+Jackal|jackal|Coupe
+Oracle XS|oracle|Coupe
+Oracle XS V12|oracle2|Coupe
+Sentinel|sentinel|Coupe
+Sentinel XS|sentinel2|Coupe
+Zion|zion|Coupe
+Zion Cabrio|zion2|Coupe
+
+Bifta|bifta|Off-Road
+Bodhi|bodhi2|Off-Road
+Brawler|brawler|Off-Road
+Bubsta 6x6|dubsta3|Off-Road
+Dune Buggy|dune|Off-Road
+Guardian|guardian|Off-Road
+Injection|bfinjection|Off-Road
+Kalahari|kalahari|Off-Road
+Kamacho|kamacho|Off-Road
+Lifeguard|lguard|Off-Road
+Mesa Trail|mesa3|Off-Road
+Monster Truck|monster|Off-Road
+Nightshark|nightshark|Off-Road
+Rancher XL|rancherxl|Off-Road
+Rebel|rebel|Off-Road
+Sandking|sandking|Off-Road
+Sandking XL|sandking2|Off-Road
+Technical|technical|Off-Road
+Trophy Truck|trophytruck|Off-Road
+Vagrant|vagrant|Off-Road
+Akuma|akuma|Motorcycle
+Avarus|avarus|Motorcycle
+Bagger|bagger|Motorcycle
+Bati 801|bati|Motorcycle
+Bati 801RR|bati2|Motorcycle
+BF400|bf400|Motorcycle
+Carbon RS|carbonrs|Motorcycle
+Daemon|daemon|Motorcycle
+Daemon Custom|daemon2|Motorcycle
+Defiler|defiler|Motorcycle
+Diablous|diablous|Motorcycle
+Diablous Custom|diablous2|Motorcycle
+Double T|double|Motorcycle
+Enduro|enduro|Motorcycle
+Esskey|esskey|Motorcycle
+Faggio|faggio2|Motorcycle
+Faggio Sport|faggio3|Motorcycle
+FCR 1000|fcr|Motorcycle
+FCR 1000 Custom|fcr2|Motorcycle
+Hakuchou|hakuchou|Motorcycle
+Hakuchou Drag|hakuchou2|Motorcycle
+Hexer|hexer|Motorcycle
+Innovation|innovation|Motorcycle
+Lectro|lectro|Motorcycle
+Manchez|manchez|Motorcycle
+Nemesis|nemesis|Motorcycle
+Nightblade|nightblade|Motorcycle
+PCJ 600|pcj|Motorcycle
+Rat Bike|ratbike|Motorcycle
+Ruffian|ruffian|Motorcycle
+Sanchez|sanchez|Motorcycle
+Sanchez Livery|sanchez2|Motorcycle
+Sanctus|sanctus|Motorcycle
+Shotaro|shotaro|Motorcycle
+Sovereign|sovereign|Motorcycle
+Thrust|thrust|Motorcycle
+Vader|vader|Motorcycle
+Vindicator|vindicator|Motorcycle
+Vortex|vortex|Motorcycle
+Wolfsbane|wolfsbane|Motorcycle
+Zombie Bobber|zombiea|Motorcycle
+Zombie Chopper|zombieb|Motorcycle
+Reever|reever|Motorcycle
+Shinobi|shinobi|Motorcycle
+Manchez Scout|manchez3|Motorcycle
+Police Cruiser|police|Emergency
+Police Cruiser Buffalo|police2|Emergency
+Police Interceptor|police3|Emergency
+Unmarked Police Cruiser|police4|Emergency
+Police Bike|policeb|Emergency
+Police Rancher|policeold1|Emergency
+Police Roadcruiser|policeold2|Emergency
+FIB Buffalo|fbi|Emergency
+FIB Granger|fbi2|Emergency
+Sheriff SUV|sheriff|Emergency
+Sheriff Cruiser|sheriff2|Emergency
+Prison Bus|pbus|Emergency
+Police Riot|riot|Emergency
+Police Transporter|policet|Emergency
+Ambulance|ambulance|Emergency
+Fire Truck|firetruk|Emergency
+Lifeguard SUV|lguard|Emergency
+Park Ranger|pranger|Emergency
+Taxi|taxi|Service
+Bus|bus|Service
+Coach|coach|Service
+Tour Bus|tourbus|Service
+
+Barracks|barracks|Military
+Barracks Semi|barracks2|Military
+Crusader|crusader|Military
+Rhino Tank|rhino|Military
+APC|apc|Military
+Chernobog|chernobog|Military
+Half Track|halftrack|Military
+Insurgent|insurgent|Military
+Insurgent Pick-Up|insurgent2|Military
+Insurgent Custom|insurgent3|Military
+Nightshark|nightshark|Military
+Technical|technical|Military
+Technical Custom|technical3|Military
+Trailer Anti-Air|trailersmall2|Military
+Khanjali Tank|khanjali|Military
+Menacer|menacer|Military
