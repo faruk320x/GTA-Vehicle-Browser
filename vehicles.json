@@ -1,32 +1,32 @@
 [
   {
-    "name": "Bati 801",
-    "model": "bati",
-    "type": "Motorcycle"
+    "Name": "Bati 801",
+    "Model": "bati",
+    "Type": "Motorcycle"
   },
   {
-    "name": "Hakuchou",
-    "model": "hakuchou",
-    "type": "Motorcycle"
+    "Name": "Hakuchou",
+    "Model": "hakuchou",
+    "Type": "Motorcycle"
   },
   {
-    "name": "Akuma",
-    "model": "akuma",
-    "type": "Motorcycle"
+    "Name": "Akuma",
+    "Model": "akuma",
+    "Type": "Motorcycle"
   },
   {
-    "name": "Sultan",
-    "model": "sultan",
-    "type": "Sports"
+    "Name": "Sultan",
+    "Model": "sultan",
+    "Type": "Sports"
   },
   {
-    "name": "Elegy RH8",
-    "model": "elegy",
-    "type": "Sports"
+    "Name": "Elegy RH8",
+    "Model": "elegy",
+    "Type": "Sports"
   },
   {
-    "name": "Zentorno",
-    "model": "zentorno",
-    "type": "Super"
+    "Name": "Zentorno",
+    "Model": "zentorno",
+    "Type": "Super"
   }
 ]
