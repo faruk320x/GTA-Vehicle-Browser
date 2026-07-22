@@ -1,41 +1,40 @@
 [
-  {
+{
     "Name": "Sultan",
     "Model": "sultan",
     "Type": "Sports",
     "Image": "sultan.jpg"
-  },
-  {
+},
+{
     "Name": "Bati 801",
     "Model": "bati",
     "Type": "Motorcycle",
     "Image": "bati.jpg"
-  },
-  {
+},
+{
     "Name": "Hakuchou",
     "Model": "hakuchou",
     "Type": "Motorcycle",
     "Image": "hakuchou.jpg"
-  },
-  {
+},
+{
     "Name": "Akuma",
     "Model": "akuma",
     "Type": "Motorcycle",
     "Image": "akuma.jpg"
-  },
-  {
+},
+{
     "Name": "Zentorno",
     "Model": "zentorno",
     "Type": "Super",
     "Image": "zentorno.jpg"
-  },
-  {
+},
+{
     "Name": "Adder",
     "Model": "adder",
     "Type": "Super",
     "Image": "adder.jpg"
-  }
-],
+},
 {
   "Name": "Adder",
   "Model": "adder",
