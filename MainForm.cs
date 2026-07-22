@@ -11,12 +11,14 @@ namespace GTAVehicleBrowser
     public class MainForm : Form
     {
         TextBox searchBox;
+        ComboBox categoryBox;
         ListBox vehicleList;
         PictureBox vehicleImage;
         Label infoLabel;
         Button copyButton;
 
         List<Vehicle> vehicles = new();
+        List<Vehicle> filteredVehicles = new();
 
 
         public MainForm()
@@ -26,25 +28,33 @@ namespace GTAVehicleBrowser
             Height = 600;
 
 
+            categoryBox = new ComboBox();
+            categoryBox.Left = 20;
+            categoryBox.Top = 20;
+            categoryBox.Width = 250;
+            categoryBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryBox.SelectedIndexChanged += FilterChanged;
+
+
             searchBox = new TextBox();
-            searchBox.Left = 20;
+            searchBox.Left = 290;
             searchBox.Top = 20;
-            searchBox.Width = 820;
-            searchBox.PlaceholderText = "Araç adı veya model kodu ara...";
-            searchBox.TextChanged += SearchBox_TextChanged;
+            searchBox.Width = 550;
+            searchBox.PlaceholderText = "Araç ara...";
+            searchBox.TextChanged += FilterChanged;
 
 
             vehicleList = new ListBox();
             vehicleList.Left = 20;
-            vehicleList.Top = 60;
+            vehicleList.Top = 70;
             vehicleList.Width = 300;
-            vehicleList.Height = 450;
-            vehicleList.SelectedIndexChanged += VehicleList_SelectedIndexChanged;
+            vehicleList.Height = 430;
+            vehicleList.SelectedIndexChanged += VehicleSelected;
 
 
             vehicleImage = new PictureBox();
             vehicleImage.Left = 370;
-            vehicleImage.Top = 60;
+            vehicleImage.Top = 70;
             vehicleImage.Width = 350;
             vehicleImage.Height = 250;
             vehicleImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -52,20 +62,20 @@ namespace GTAVehicleBrowser
 
             infoLabel = new Label();
             infoLabel.Left = 370;
-            infoLabel.Top = 340;
+            infoLabel.Top = 350;
             infoLabel.Width = 400;
             infoLabel.Height = 100;
 
 
             copyButton = new Button();
             copyButton.Left = 370;
-            copyButton.Top = 450;
+            copyButton.Top = 460;
             copyButton.Width = 220;
-            copyButton.Height = 40;
-            copyButton.Text = "Model Kodunu Kopyala";
-            copyButton.Click += CopyButton_Click;
+            copyButton.Text = "Model Kopyala";
+            copyButton.Click += CopyModel;
 
 
+            Controls.Add(categoryBox);
             Controls.Add(searchBox);
             Controls.Add(vehicleList);
             Controls.Add(vehicleImage);
@@ -75,9 +85,7 @@ namespace GTAVehicleBrowser
 
             LoadVehicles();
         }
-
-
-        void LoadVehicles()
+                void LoadVehicles()
         {
             string file = Path.Combine(
                 Application.StartupPath,
@@ -102,65 +110,96 @@ namespace GTAVehicleBrowser
                 ?? new List<Vehicle>();
 
 
-            RefreshList(vehicles);
+            LoadCategories();
+
+            ApplyFilter();
         }
 
 
-        void RefreshList(List<Vehicle> list)
+        void LoadCategories()
         {
-            vehicleList.Items.Clear();
+            categoryBox.Items.Clear();
 
-            foreach (var vehicle in list)
+            categoryBox.Items.Add("Tümü");
+
+
+            foreach (string type in vehicles
+                .Select(x => x.Type)
+                .Distinct()
+                .OrderBy(x => x))
             {
-                vehicleList.Items.Add(vehicle.Name);
+                categoryBox.Items.Add(type);
             }
+
+
+            categoryBox.SelectedIndex = 0;
         }
 
 
-        void SearchBox_TextChanged(
+        void FilterChanged(
             object? sender,
             EventArgs e)
         {
-            string text = searchBox.Text.ToLower();
+            ApplyFilter();
+        }
 
 
-            var result = vehicles
+        void ApplyFilter()
+        {
+            string search =
+                searchBox.Text.ToLower();
+
+
+            string category =
+                categoryBox.SelectedItem?.ToString()
+                ?? "Tümü";
+
+
+            filteredVehicles =
+                vehicles
                 .Where(x =>
-                    x.Name.ToLower().Contains(text) ||
-                    x.Model.ToLower().Contains(text)
+                    (category == "Tümü" ||
+                     x.Type == category)
+                    &&
+                    (
+                     x.Name.ToLower()
+                     .Contains(search)
+                     ||
+                     x.Model.ToLower()
+                     .Contains(search)
+                    )
                 )
                 .ToList();
 
 
-            RefreshList(result);
+            vehicleList.Items.Clear();
+
+
+            foreach (var vehicle in filteredVehicles)
+            {
+                vehicleList.Items.Add(
+                    vehicle.Name
+                );
+            }
         }
 
 
-        Vehicle? GetSelectedVehicle()
-        {
-            if (vehicleList.SelectedItem == null)
-                return null;
-
-
-            return vehicles.FirstOrDefault(
-                x => x.Name ==
-                vehicleList.SelectedItem.ToString()
-            );
-        }
-
-
-        void VehicleList_SelectedIndexChanged(
+        void VehicleSelected(
             object? sender,
             EventArgs e)
         {
-            var vehicle = GetSelectedVehicle();
-
-            if (vehicle == null)
+            if (vehicleList.SelectedIndex < 0)
                 return;
 
 
+            Vehicle vehicle =
+                filteredVehicles[
+                    vehicleList.SelectedIndex
+                ];
+
+
             infoLabel.Text =
-                "Araç: " + vehicle.Name +
+                "Ad: " + vehicle.Name +
                 "\nModel: " + vehicle.Model +
                 "\nKategori: " + vehicle.Type;
 
@@ -185,20 +224,28 @@ namespace GTAVehicleBrowser
         }
 
 
-        void CopyButton_Click(
+        void CopyModel(
             object? sender,
             EventArgs e)
         {
-            var vehicle = GetSelectedVehicle();
-
-            if (vehicle == null)
+            if (vehicleList.SelectedIndex < 0)
                 return;
 
 
-            Clipboard.SetText(vehicle.Model);
+            Vehicle vehicle =
+                filteredVehicles[
+                    vehicleList.SelectedIndex
+                ];
+
+
+            Clipboard.SetText(
+                vehicle.Model
+            );
+
 
             MessageBox.Show(
-                vehicle.Model + " kopyalandı"
+                vehicle.Model +
+                " kopyalandı"
             );
         }
     }
