@@ -11,7 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="vehicles.json" />
+
+    <None Include="vehicles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Include="images\**\*.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
   </ItemGroup>
 
 </Project>
