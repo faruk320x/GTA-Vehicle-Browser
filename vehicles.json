@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Bati 801",
+    "model": "bati",
+    "type": "Motorcycle"
+  },
+  {
+    "name": "Hakuchou",
+    "model": "hakuchou",
+    "type": "Motorcycle"
+  },
+  {
+    "name": "Akuma",
+    "model": "akuma",
+    "type": "Motorcycle"
+  },
+  {
+    "name": "Sultan",
+    "model": "sultan",
+    "type": "Sports"
+  },
+  {
+    "name": "Elegy RH8",
+    "model": "elegy",
+    "type": "Sports"
+  },
+  {
+    "name": "Zentorno",
+    "model": "zentorno",
+    "type": "Super"
+  }
+]
