@@ -6,20 +6,24 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
     <AssemblyName>GTA Vehicle Browser</AssemblyName>
     <RootNamespace>GTAVehicleBrowser</RootNamespace>
   </PropertyGroup>
 
+
   <ItemGroup>
 
-    <None Include="vehicles.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="vehicles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
 
-    <None Include="images\**\*.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+
+    <Content Include="images\**\*.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
 
   </ItemGroup>
+
 
 </Project>
