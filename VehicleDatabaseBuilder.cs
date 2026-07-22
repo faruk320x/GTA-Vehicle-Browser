@@ -7,58 +7,37 @@ class Program
 {
     static void Main()
     {
-        var vehicles = new List<Vehicle>();
+        string source = "vehicles_source.txt";
 
-        string[] models =
+        if (!File.Exists(source))
         {
-            "adder",
-            "akuma",
-            "alpha",
-            "baller",
-            "baller2",
-            "banshee",
-            "banshee2",
-            "bati",
-            "bati2",
-            "buffalo",
-            "buffalo2",
-            "carbonizzare",
-            "cheetah",
-            "comet2",
-            "coquette",
-            "dominator",
-            "elegy",
-            "elegy2",
-            "entityxf",
-            "feltzer2",
-            "furoregt",
-            "gauntlet",
-            "infernus",
-            "jester",
-            "kuruma",
-            "kuruma2",
-            "massacro",
-            "oracle",
-            "osiris",
-            "rapidgt",
-            "reaper",
-            "sultan",
-            "sultanrs",
-            "tempesta",
-            "t20",
-            "turismor",
-            "zentorno"
-        };
+            Console.WriteLine("vehicles_source.txt bulunamadı!");
+            Console.ReadKey();
+            return;
+        }
+
+        List<Vehicle> vehicles = new();
 
 
-        foreach(var model in models)
+        foreach (string line in File.ReadAllLines(source))
         {
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+
+            string[] parts = line.Split('|');
+
+
+            if (parts.Length < 3)
+                continue;
+
+
             vehicles.Add(new Vehicle
             {
-                Name = model.ToUpper(),
-                Model = model,
-                Type = "Vehicle",
-                Image = model + ".jpg"
+                Name = parts[0],
+                Model = parts[1],
+                Type = parts[2],
+                Image = parts[1] + ".jpg"
             });
         }
 
@@ -74,21 +53,22 @@ class Program
 
         File.WriteAllText(
             "vehicles.json",
-            json
-        );
+            json);
 
 
         Console.WriteLine(
-            "vehicles.json oluşturuldu."
+            vehicles.Count + " araç oluşturuldu."
         );
+
+        Console.ReadKey();
     }
 }
 
 
 class Vehicle
 {
-    public string Name {get;set;} = "";
-    public string Model {get;set;} = "";
-    public string Type {get;set;} = "";
-    public string Image {get;set;} = "";
+    public string Name { get; set; } = "";
+    public string Model { get; set; } = "";
+    public string Type { get; set; } = "";
+    public string Image { get; set; } = "";
 }
