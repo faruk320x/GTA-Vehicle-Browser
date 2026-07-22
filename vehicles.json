@@ -1,117 +1,38 @@
 [
   {
-    "Name": "Adder",
-    "Model": "adder",
-    "Type": "Super"
-  },
-  {
-    "Name": "Akuma",
-    "Model": "akuma",
-    "Type": "Motorcycle"
-  },
-  {
     "Name": "Bati 801",
     "Model": "bati",
-    "Type": "Motorcycle"
-  },
-  {
-    "Name": "Bati 801RR",
-    "Model": "bati2",
-    "Type": "Motorcycle"
-  },
-  {
-    "Name": "Carbon RS",
-    "Model": "carbonrs",
-    "Type": "Motorcycle"
+    "Type": "Motorcycle",
+    "Image": "bati.jpg"
   },
   {
     "Name": "Hakuchou",
     "Model": "hakuchou",
-    "Type": "Motorcycle"
+    "Type": "Motorcycle",
+    "Image": "hakuchou.jpg"
   },
   {
-    "Name": "Hakuchou Drag",
-    "Model": "hakdrag",
-    "Type": "Motorcycle"
-  },
-  {
-    "Name": "Sanchez",
-    "Model": "sanchez",
-    "Type": "Motorcycle"
+    "Name": "Akuma",
+    "Model": "akuma",
+    "Type": "Motorcycle",
+    "Image": "akuma.jpg"
   },
   {
     "Name": "Sultan",
     "Model": "sultan",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Sultan RS",
-    "Model": "sultanrs",
-    "Type": "Sports"
+    "Type": "Sports",
+    "Image": "sultan.jpg"
   },
   {
     "Name": "Elegy RH8",
     "Model": "elegy",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Elegy Retro Custom",
-    "Model": "elegy2",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Jester",
-    "Model": "jester",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Jester Racecar",
-    "Model": "jester2",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Kuruma",
-    "Model": "kuruma",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Armored Kuruma",
-    "Model": "kuruma2",
-    "Type": "Sports"
-  },
-  {
-    "Name": "Comet",
-    "Model": "comet2",
-    "Type": "Sports"
+    "Type": "Sports",
+    "Image": "elegy.jpg"
   },
   {
     "Name": "Zentorno",
     "Model": "zentorno",
-    "Type": "Super"
-  },
-  {
-    "Name": "Turismo R",
-    "Model": "turismor",
-    "Type": "Super"
-  },
-  {
-    "Name": "T20",
-    "Model": "t20",
-    "Type": "Super"
-  },
-  {
-    "Name": "Osiris",
-    "Model": "osiris",
-    "Type": "Super"
-  },
-  {
-    "Name": "Tempesta",
-    "Model": "tempesta",
-    "Type": "Super"
-  },
-  {
-    "Name": "XA-21",
-    "Model": "xa21",
-    "Type": "Super"
+    "Type": "Super",
+    "Image": "zentorno.jpg"
   }
 ]
