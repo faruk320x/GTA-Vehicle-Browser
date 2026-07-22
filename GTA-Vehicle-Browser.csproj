@@ -11,9 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="vehicles.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="vehicles.json" />
   </ItemGroup>
 
 </Project>
